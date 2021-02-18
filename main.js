@@ -3,9 +3,11 @@
             return {
             search2:'',
             photogallery: [{ src:'./images/1.jpg', dis:'Extra terrestrial Biological Entities', done: false},
-                            {src:'./images/2.jpg', dis:'Greatest Hits 2011-2017 "Alter Ego"', done: false}],
-            search: [{ src:'./images/baseline_search_black_18dp.png', done: false}]                                                                                                                                
+                            {src:'./images/2.jpg', dis:'Greatest Hits 2011-2017 "Alter Ego"', done: false}],            
+            search: [{ src:'./images/baseline_search_black_18dp.png', done: false}]                                                                                                                                                
+            
         }
+        
     },
         methods: {
             toggleDone(index){
@@ -20,8 +22,8 @@
                 return this.photogallery.length
             },
             filteredList(){
-                return this.photogallery.filter(post =>{
-                    return photogallery.src.includes(this.search2.toLowerCase())
+                return this.photogallery.filter(photogallery =>{
+                    return photogallery.dis.toLowerCase().includes(this.search2.toLowerCase())
                   })
             }
 
