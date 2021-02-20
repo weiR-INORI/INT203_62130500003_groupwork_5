@@ -23,40 +23,29 @@
 <body>
   <div  id="EGOIST" class="px-80 pt-20">
     <div class="text-xl">Photo Gallery ( {{ countPhoto }} )</div>
-    
-    <ul>
-      <li v-for="(task2,index) in search">        
-        <button v-on:click="toggleDone2(index)" class="px-2 py-2 hover:opacity-80"> <img v-bind:src="task2.src"></button>
-        <div v-show="task2.done">          
-            <input class="search-wrapper mt-4 w-40 h-8 border-2 border-black" type="text" placeholder="Please enter text"/>
-          <button v-on:click="toggleDone2(index)" class='ml-4 w-20 h-8 border-2 border-black'>Cancel</button>
-        <div v-for="photogallery in filteredList">
-          <a v-bind:herf="photogallery.dis" target="_blank">
-          </a>
+                     
+        <button v-show="!search" v-on:click="toggleDone2()" class="h-8 w-8 hover:opacity-80"> <img src="images/baseline_search_black_18dp.png"></button>        
+        <div v-show="search">          
+          <input v-model="search2" @keyup.enter='addtext' class="mt-4 w-40 h-8 border-2 border-black" type="text" placeholder="Please enter text"/>
+          <button v-on:click="toggleDone2()" class='ml-2 w-20 h-8 border-2 border-black'>Cancel</button>                    
         </div>
-        </div>
-        
-      </li>
-    </ul>
-
+                  
     <br>
 
-    <ul class="flex space-x-8">
-      <li v-for="(task,index) in photogallery">                                   
+    <div class="flex space-x-8">
+      <div v-if="notfound">Not found</div>
+      
+      <div v-for="(task,index) in filteredList" v-else>                                   
         {{task.dis}}
-        
-        <div v-show="task.done"><img class='h-4 w-4' src="./images/baseline_favorite_black_18dp.png"></div>        
-        <div v-on:click="toggleDone(index)" class="hover:opacity-80"> <img v-bind:src="task.src"></div>
-        
-        <div @dblclick="toggleDone(index)"></div> 
-       
-        <div v-show="task.done"><img v-bind:src="task.src" class='mt-20 px-8 py-8 h-720 w-716 bg-black bg-center'>
-        <button v-on:click="toggleDone(index)" class=" "> <img src="./images/baseline_close_black_18dp.png" class="w-4 h-4 absolute left-0 top-0"></button>
+                
+        <div v-show="task.done"><img class='h-8 w-8' src="./images/baseline_favorite_black_18dp.png"></div>                            
+        <div v-on:dblclick="toggleDone3(index)" v-on:click="toggleDone(index)" class="hover:opacity-80"> <img v-bind:src="task.src"></div>
+        <div v-show="task.zoom"><img v-bind:src="task.src" class='mt-20 px-8 py-8 h-720 w-716 bg-black bg-center'>
+        <button v-on:click="toggleDone3(index)"> <img src="./images/baseline_close_black_18dp.png" class="w-8 h-8"></button>
         </div>    
         
-        
-      </li>
-    </ul>        
+      </div>                    
+    </div>        
   </div>
 
   <!-- my main.js -->
