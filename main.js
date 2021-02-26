@@ -1,4 +1,4 @@
-    const EGOIST = {
+    const app = Vue.createApp({
         data() {
             return {
             
@@ -47,5 +47,5 @@
 
         }
 
-    }
-    Vue.createApp(EGOIST).mount('#EGOIST')
+    })
+    
