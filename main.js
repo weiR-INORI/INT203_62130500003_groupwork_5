@@ -1,16 +1,13 @@
-    const app = Vue.createApp({
+    const EGOIST = Vue.createApp({
         data() {
             return {
             
             photogallery: [{ src:'./images/1.jpg', dis:'Extra terrestrial Biological Entities', done: false, zoom: false},
-                            {src:'./images/2.jpg', dis:'Greatest Hits 2011-2017 "Alter Ego"', done: false, zoom: false}],                                                    
+                            {src:'./images/2.jpg', dis:'Greatest Hits 2011-2017 "Alter Ego"', done: false, zoom: false}],
             search: false,
             filter: '',
-            notfound: false
-            
-            
-            
-         }
+            notfound: false                                    
+            }
         
         },
         methods: {
@@ -23,9 +20,9 @@
             toggleDone3(index){
                 this.photogallery[index].zoom = !this.photogallery[index].zoom
             },
-            addtext(){
-                this.filter = this.search2
-                this.notfound = false
+            addtext(index){
+                this.filter = index
+                this.notfound = false                
             }
         },
         computed: {

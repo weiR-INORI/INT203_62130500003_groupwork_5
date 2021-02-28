@@ -21,12 +21,16 @@
 </head>
 
 <body>
-  <div  id="app" class="px-80 pt-20">
+  <div id="EGOIST" class="px-80 pt-20">
     
     <div class="text-xl">Photo Gallery ( {{ countPhoto }} )</div>
-    <photo-item :filteredlist="filteredList" @toggle-done="toggleDone" @toggle-done3="toggleDone3"></photo-item>
-    <photo-search @toggle-done2="toggleDone2" @add-text="addtext"></photo-search>
-    <photo-view @toggle-done3="toggleDone3"></photo-view>
+    <br>
+    <photo-search :search="search" @add-text="addtext" @toggle-done2="toggleDone2"></photo-search>
+    <br>
+    <photo-item :notfound="notfound" :filtered-list="filteredList" @toggle-done="toggleDone"@toggle-done3="toggleDone3" >
+    </photo-item>    
+    
+    <photo-view :filtered-list="filteredList" @toggle-done3="toggleDone3"></photo-view>
   </div>
 
   <!-- my main.js -->
@@ -36,7 +40,7 @@
   <script src="./components/PhotoView.js"></script>
 
   <script>
-  const mountedApp = app.mount('#app')
+  const mountedApp = EGOIST.mount('#EGOIST')
   </script>
 </body>
 
